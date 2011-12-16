@@ -1,5 +1,20 @@
+/*
+ * TODO
+ * - comparaison avec mots/expressions du français (moins lettres absentes)
+ * - association de lettres
+ */
 var Oulipo = require('./oulipo').Oulipo;
 var jsonDisplay = require('./helpers').jsonDisplay;
+
+var chiensuperieur1 = "t'cea uc tscl rs" + "\n" +
+"n neo rt aluot" + "\n" +
+"ia ouna s ilel-" + "\n" +
+"-rc oal ei ntoi." + "\n";
+
+var chiensuperieur2 = "O'atn ia ootar ost" + "\n" +
+"u nutl so nrilo" + "\n" +
+"rt aluot ai rnasntni" + "\n" +
+"tea rl tscl" + "\n";
 
 var chientressuperieur = " IBS EUSLCCONISR, ONSDNCCS0 ," + "\n" +
 " EUF SLS ENSIO TELE:1" + "\n" +
