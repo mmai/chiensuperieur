@@ -73,6 +73,150 @@ Oulipo.belleAbsente = function(txt){
   return false;
 };
 
+/*** CONTRAINTES
+//Roubaud
+mongine
+josephine
+
+A
+Abécédaire;
+Acronyme
+Acrostiche brivadois
+Acrostiche universel
+Alexandrin greffé
+Alexandrin jouetien
+Alexandrin oral
+Algorithme de Mathews : "http://www.oulipo.net/contraintes/docs/algorithme_de_Mathews"
+Alva
+Anaérobie
+Anagramme
+Antérime
+Antirime
+Aphorime
+Aphorisme
+Arbre à théâtre
+Arbres et arborescence
+Avalanche
+Avion
+B
+Baobab
+Beau présent
+Belle absente
+Bibliothèques virtuelles
+Bord de poème
+Boule de neige
+Bris de mots
+Bubu l'Urubu
+C
+Caradec
+Carré lescurien
+Chicago
+Chimère
+Chronopoème
+Citations
+CMMP
+Conte à votre façon
+Contrainte de Delmas
+Contrainte de Lloyd
+Contrainte de Pascal
+Contrainte de Turing
+Contrainte du prisonnier
+Cornichon
+Cylindre
+D
+Désarguesienne
+Deunglitsch
+E
+Echelle
+Eclipse
+Emir
+Eodermdrome
+Epithalame oulipien
+Erim
+Etreinte
+Exercice de style
+Explorations à la limite
+F
+Filigrane
+Formes fixes
+H
+Haï-kaïsation
+Hétérogrammes
+Homomorphisme
+Homophonies
+Homosyntaxisme
+Homovocalisme
+Hypertropes
+I
+Immorale élémentaire
+Intérieur de poème
+Inventaire
+J
+Joséphine
+L
+Leiris
+Lipogramme
+Liponymie
+Lipossible
+Littérature définitionnelle
+Littérature en graphe
+Locurime
+Locutions introuvables
+Logo-rallye
+LSD
+L’égal franglais
+M
+Minisextine (minisestina)
+Mongine
+Monkine
+Monovocalisme
+Morale élémentaire
+N
+N-ine
+O
+Oblique
+Ouliporime
+P
+Palindrome
+Parcours obligé (ou logo-rallye)
+Perverbe
+Petite boîte
+Poème carré ou carré lescurien
+Poème de métro
+Poème fondu
+Poème pour bègue
+Q
+QSSD
+Quenoum
+R
+Redonde
+Rime berrichonne
+Rime bisexuelle
+S
+S+7
+Sardinosaure
+Sollicitude
+Sonnet à la limite
+Sonnet irrationnel
+Surdéfinitions
+T
+Terine
+Terine aux trois voyelles
+Terine syllabique
+Textes à démarreur
+Théâtre booléen
+Tireur à la ligne
+Traduction antonymique : "Dans un énoncé donné, remplacer chacun des mots importants (substantif, verbe, adjectif, adverbe) par un de ses antonymes possibles. Par exemple, la traduction, par Georges Perec, de la première phrase d’ À la recherche du temps perdu, “Longtemps je me suis couché de bonne heure” donne ; "Une fois, l’autre fit la grasse matinée"."
+Traduction homophonique : "“ Un singe débotté est une joie pour l’hiver ” (François Le Lionnais), est une traduction homophonique du vers fameux de John Keats : A thing of beauty is a joy for ever."
+Transduction
+Trident
+Ulcérations : "Les onze lettres les plus fréquentes dans un texte en langue française un peu étendu sont celles qui figurent dans le mot ulcérations. Un poème en ‘ ulcérations’ se compose de vers de onze lettres qui sont tous des anagrammes du mot. 
+Au lieu de la lettre ‘c’ qui est la moins fréquente des onze lettres d’’ulcérations’, on peut utiliser une autre des quinze lettres restantes de l’alphabet. On a ainsi des hétérogrammes en ‘ton de b, de f, de g,’ …."
+Villanelle
+'Vocabulaires raisonnés' : "Un lexique peut-être ordonné suivant des principes nouveaux et rationnels. Ainsi la définition des lettres de vent (N=nord, E=est, O=ouest, S=sud) permet de classer les mots en calmes et agités, de définir le ‘beaufort d’un mot’ etc. On considère aussi les notions  d’altitude et de profondeur…";
+'X prend Y pour Z' : "On représente cette relation ternaire comme une multiplication, xy=z, dont on se donne la table. Une table de multiplication étant donnée a priori, on peut utiliser d’autres prédicats : x complote avec y contre z, par exemple. Les propriétés algébriques de la multiplication choisie s’interprètent en événements d’un récit.";
+***/
+
 //console.log(frequence("aa b cqsdf cc abb");frequences);
 
 /*
