@@ -3,6 +3,7 @@
  * - comparaison avec mots/expressions du français (moins lettres absentes)
  * - association de lettres
  */
+var fs = require('fs');
 var Oulipo = require('./oulipo').Oulipo;
 var jsonDisplay = require('./helpers').jsonDisplay;
 
@@ -38,6 +39,23 @@ var chientressuperieur = " IBS EUSLCCONISR, ONSDNCCS0 ," + "\n" +
 "IPQ AIU NEE V" + "\n" +
 "EUW TXOENNE.";
 
+//var mots = Oulipo.getMots(chiensuperieur1);
+var mots = Oulipo.getMots(chientressuperieur.toLowerCase());
+var dict = 'mots_francais_chien_signatureDecalage.txt';
+
+var fichier = 'dictionnaires/' + dict;
+fs.readFile(fichier, 'utf8', function(err, dict_data){
+    if(err) {
+      console.error("Could not open file: %s", err);
+      process.exit(1);
+    }
+    for (var i=0, len = mots.length;i< len;i++){
+      mot = mots[i];
+      console.log(mot + " ("+Oulipo.signatureDecalage(mot)+") : " + Oulipo.lookup(dict_data, Oulipo.signatureDecalage(mot)));
+    }
+  });
+
+/*
 var lines = chientressuperieur.split("\n");
 res = Array();
 for (var i=0, len = lines.length;i< len;i++){
@@ -47,4 +65,5 @@ jsonDisplay(res, {
     format:"table",
     columns:Oulipo.ALPHABET
   });
+//*/
 

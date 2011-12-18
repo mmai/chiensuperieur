@@ -22,6 +22,80 @@ Oulipo.nplus = function (n, str) {
 };
 //console.log(nplus(5,"aBc"));
 
+
+Oulipo.getMots = function(txt){
+  var reg = new RegExp("[^a-z]", "g");
+  txt = txt.replace(reg, " ");
+  var mots = txt.split(" ").filter(function(elem){return elem!=="";});
+  return mots;
+};
+
+Oulipo.lookup = function(dictionnaire, mot){
+  var compteur = 0;
+  var lines = dictionnaire.split("\n");
+  for (var i=0, len = lines.length;i< len;i++){
+    if (lines[i] === mot){
+      compteur++;
+    }
+  }
+  return compteur;
+};
+
+//Retourne la chaine str allégée des lettres a_supprimer
+Oulipo.allege = function (a_supprimer, str){
+  str = helpers.accentsTidy(str); 
+  for (var i=0, len = a_supprimer.length;i<len;i++){
+    var reg=new RegExp(a_supprimer[i], "g");
+    str = str.replace(reg, "");
+  }
+  return str;
+};
+
+//Retourne la traduction de str en "chien ordinaire", ie on ne conserver que les lettres du mot ulcerations
+Oulipo.chienOrdinaire = function (str){
+  return Oulipo.allege(["b","d","f","g","h","j","k","m","p","q","v","w","x","y","z"], str);
+};
+
+/*
+ * Retourne le nombre d'occurences des lettres du mot
+ * ex : remarquable => 11111222
+ */
+Oulipo.compteLettres= function(mot){
+  var signature = Array();
+  var tab = mot.split("");
+  var len=tab.length;
+  tab.sort();
+  if (len > 0){
+    var count = 1;
+    var curletter = tab[0];
+    for (var i=1;i<len;i++){
+      if (tab[i] != curletter){
+        signature.push(count);
+        curletter = tab[i];
+        count = 1;
+      }
+      else {
+        count++;
+      }
+    }
+    signature.push(count);
+  }
+  signature.sort();
+  return signature.join("");
+};
+
+//retourne une meme signature pour tous les mots issus d'un même mot par décalage : balle = cbmmf = dcnng
+Oulipo.signatureDecalage= function(mot){
+  var signature = "";
+  var charbase = mot.charCodeAt(0);
+  for (var i=0, len=mot.length;i<len;i++){
+    //signature += String.fromCharCode((mot.charCodeAt(i) - charbase) % 26 + 97);
+    signature += String.fromCharCode((mot.charCodeAt(i) + 26 - charbase) % 26 + 97);
+  }
+  return signature;
+};
+
+
 //Retourne les fréquences de chaque lettre de str
 Oulipo.frequence = function(str){
   str = helpers.accentsTidy(str);

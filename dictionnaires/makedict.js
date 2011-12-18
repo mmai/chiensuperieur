@@ -1,27 +1,39 @@
 var fs = require('fs');
+var Oulipo = require('../oulipo').Oulipo;
 
-accentsTidy = function(s){
-  var r=s.toLowerCase();
-  r = r.replace(new RegExp("[àáâãäå]", 'g'),"a");
-  r = r.replace(new RegExp("æ", 'g'),"ae");
-  r = r.replace(new RegExp("ç", 'g'),"c");
-  r = r.replace(new RegExp("[èéêë]", 'g'),"e");
-  r = r.replace(new RegExp("[ìíîï]", 'g'),"i");
-  r = r.replace(new RegExp("ñ", 'g'),"n");                            
-  r = r.replace(new RegExp("[òóôõö]", 'g'),"o");
-  r = r.replace(new RegExp("œ", 'g'),"oe");
-  r = r.replace(new RegExp("[ùúûü]", 'g'),"u");
-  r = r.replace(new RegExp("[ýÿ]", 'g'),"y");
-  return r;
+var transforme = function (fichier, func, callback){
+  fs.readFile(fichier, 'utf8', function(err,data){
+      if(err) {
+        console.error("Could not open file: %s", err);
+        process.exit(1);
+      }
+      callback(func(data));
+    });
 };
 
+var parligne = function(func){
+  return function(txt){
+    var lines = txt.split("\n");
+    res = Array();
+    for (var i=0, len = lines.length;i< len;i++){
+      res.push(func(lines[i]));
+    }
+    return res.join("\n");
+  };
+};
+
+//*
+var fichier ='mots_francais_chien.txt'; 
+transforme(fichier, parligne(Oulipo.signatureDecalage), console.log);
+//*/
+
+/*
+var fichier ='liste.de.mots.francais.sansaccents.txt'; 
+transforme(fichier, parligne(Oulipo.chienOrdinaire), console.log);
+//*/
+
+/*
+var accentsTidy = require('../helpers').accentsTidy;
 var fichier ='liste.de.mots.francais.frgut.txt'; 
-
-fs.readFile(fichier, 'utf8', function(err,data){
-  if(err) {
-    console.error("Could not open file: %s", err);
-    process.exit(1);
-  }
-  console.log(accentsTidy(data));
-});
-
+transforme(fichier, accentsTidy);
+//*/

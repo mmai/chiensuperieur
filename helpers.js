@@ -2,7 +2,7 @@ var Table = require('cli-table'); // for jsonDisplay
 
 accentsTidy = function(s){
   var r=s.toLowerCase();
-  r = r.replace(new RegExp("\\s", 'g'),"");
+//  r = r.replace(new RegExp("\\s", 'g'),"");
   r = r.replace(new RegExp("[àáâãäå]", 'g'),"a");
   r = r.replace(new RegExp("æ", 'g'),"ae");
   r = r.replace(new RegExp("ç", 'g'),"c");
@@ -13,7 +13,7 @@ accentsTidy = function(s){
   r = r.replace(new RegExp("œ", 'g'),"oe");
   r = r.replace(new RegExp("[ùúûü]", 'g'),"u");
   r = r.replace(new RegExp("[ýÿ]", 'g'),"y");
-  r = r.replace(new RegExp("\\W", 'g'),"");
+//  r = r.replace(new RegExp("\\W", 'g'),"");
   return r;
 };
 
