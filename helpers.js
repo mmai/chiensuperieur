@@ -17,6 +17,13 @@ accentsTidy = function(s){
   return r;
 };
 
+strtr = function(from, to, str) {
+  for(var i = 0; i < from.length; i++) {
+    str = str.replace(new RegExp(from.charAt(i),'g'), to.charAt(i));
+  }
+  return str;
+};
+
 sortByKeys = function(hash){
   var newhash = Array();
   var keys = Object.keys(hash).sort();

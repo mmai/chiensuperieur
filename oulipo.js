@@ -30,17 +30,6 @@ Oulipo.getMots = function(txt){
   return mots;
 };
 
-Oulipo.lookup = function(dictionnaire, mot){
-  var compteur = 0;
-  var lines = dictionnaire.split("\n");
-  for (var i=0, len = lines.length;i< len;i++){
-    if (lines[i] === mot){
-      compteur++;
-    }
-  }
-  return compteur;
-};
-
 //Retourne la chaine str allégée des lettres a_supprimer
 Oulipo.allege = function (a_supprimer, str){
   str = helpers.accentsTidy(str); 
@@ -84,7 +73,7 @@ Oulipo.compteLettres= function(mot){
   return signature.join("");
 };
 
-//retourne une meme signature pour tous les mots issus d'un même mot par décalage : balle = cbmmf = dcnng
+//retourne une meme signature pour tous les mots issus d'un même mot par décalage (ie chiffre de César) : balle = cbmmf = dcnng
 Oulipo.signatureDecalage= function(mot){
   var signature = "";
   var charbase = mot.charCodeAt(0);

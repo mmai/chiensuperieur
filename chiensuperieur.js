@@ -5,6 +5,7 @@
  */
 var fs = require('fs');
 var Oulipo = require('./oulipo').Oulipo;
+var Crypt = require('./cryptanalyse').Crypt;
 var jsonDisplay = require('./helpers').jsonDisplay;
 
 var chiensuperieur1 = "t'cea uc tscl rs" + "\n" +
@@ -39,8 +40,8 @@ var chientressuperieur = " IBS EUSLCCONISR, ONSDNCCS0 ," + "\n" +
 "IPQ AIU NEE V" + "\n" +
 "EUW TXOENNE.";
 
-//var mots = Oulipo.getMots(chiensuperieur1);
-var mots = Oulipo.getMots(chientressuperieur.toLowerCase());
+var mots = Oulipo.getMots(chiensuperieur1);
+//var mots = Oulipo.getMots(chientressuperieur.toLowerCase());
 var dict = 'mots_francais_chien_signatureDecalage.txt';
 
 var fichier = 'dictionnaires/' + dict;
@@ -51,7 +52,7 @@ fs.readFile(fichier, 'utf8', function(err, dict_data){
     }
     for (var i=0, len = mots.length;i< len;i++){
       mot = mots[i];
-      console.log(mot + " ("+Oulipo.signatureDecalage(mot)+") : " + Oulipo.lookup(dict_data, Oulipo.signatureDecalage(mot)));
+      console.log(mot + " ("+Oulipo.signatureDecalage(mot)+") : " + Crypt.lookup(dict_data, Oulipo.signatureDecalage(mot)));
     }
   });
 
@@ -67,3 +68,4 @@ jsonDisplay(res, {
   });
 //*/
 
+/*
