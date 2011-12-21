@@ -18,6 +18,42 @@ Crypt.assoc_method_factory = function(from, to){
 };
 /* fin methodes */
 
+var nextCount = 0;
+var nextCode = function(from, code){
+  var len = from.length;
+  var last = from[len - 1];
+
+  var position = 0;
+  while (position < len){
+    var letter = code[position];
+    if (letter !== last) {
+      code = code.substr(0, position) + from[from.indexOf(letter) + 1] + code.substr(position + 1);
+      nextCount++;
+      if (nextCount === 100){
+        console.log('.');
+        nextCount = 0;
+      }
+      return code;
+    }
+    position++;
+  }
+  return false;
+};
+
+Crypt.try_methods = function(dict, text){
+  var from = "ulcerations";
+  var code = "uuuuuuuuuuu";
+  var found = false;
+  var method;
+
+  while (!found && (code !== false)){
+    method = Crypt.assoc_method_factory(from, code);
+    found = Crypt.analyse(dict, method, text); 
+    code = nextCode(from, code);
+  }
+  return code;
+};
+
 Crypt.getMots = function(txt){
   var reg = new RegExp("[^a-z]", "g");
   txt = txt.replace(reg, " ");

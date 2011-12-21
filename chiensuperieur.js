@@ -55,6 +55,8 @@ fs.readFile(fichier, 'utf8', function(err, dict_data){
       process.exit(1);
     }
 
+    Crypt.try_methods(dict_data, "t'cea uc tscl rs");
+    /*
     for (var i=0, len = lignes.length;i< len;i++){
       ligne = lignes[i];
       var statut = ligne;
@@ -63,6 +65,7 @@ fs.readFile(fichier, 'utf8', function(err, dict_data){
       }
       console.log(statut);
     }
+    */
   });
 
 
