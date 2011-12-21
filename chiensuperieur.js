@@ -40,9 +40,13 @@ var chientressuperieur = " IBS EUSLCCONISR, ONSDNCCS0 ," + "\n" +
 "IPQ AIU NEE V" + "\n" +
 "EUW TXOENNE.";
 
-var mots = Oulipo.getMots(chiensuperieur1);
-//var mots = Oulipo.getMots(chientressuperieur.toLowerCase());
-var dict = 'mots_francais_chien_signatureDecalage.txt';
+//var mots = Crypt.getMots(chientressuperieur.toLowerCase());
+//var dict = 'mots_francais_chien_signatureDecalage.txt';
+
+var lignes = chiensuperieur1.split("\n");
+var dict = 'mots_francais_chien.txt';
+
+var testassoc = Crypt.assoc_method_factory("lnesutcaori","ulcerations");
 
 var fichier = 'dictionnaires/' + dict;
 fs.readFile(fichier, 'utf8', function(err, dict_data){
@@ -50,11 +54,17 @@ fs.readFile(fichier, 'utf8', function(err, dict_data){
       console.error("Could not open file: %s", err);
       process.exit(1);
     }
-    for (var i=0, len = mots.length;i< len;i++){
-      mot = mots[i];
-      console.log(mot + " ("+Oulipo.signatureDecalage(mot)+") : " + Crypt.lookup(dict_data, Oulipo.signatureDecalage(mot)));
+
+    for (var i=0, len = lignes.length;i< len;i++){
+      ligne = lignes[i];
+      var statut = ligne;
+      if (Crypt.analyse(dict_data, testassoc, ligne)){
+        statut += " => decrypté!!";
+      }
+      console.log(statut);
     }
   });
+
 
 /*
 var lines = chientressuperieur.split("\n");
@@ -68,4 +78,3 @@ jsonDisplay(res, {
   });
 //*/
 
-/*

@@ -22,14 +22,6 @@ Oulipo.nplus = function (n, str) {
 };
 //console.log(nplus(5,"aBc"));
 
-
-Oulipo.getMots = function(txt){
-  var reg = new RegExp("[^a-z]", "g");
-  txt = txt.replace(reg, " ");
-  var mots = txt.split(" ").filter(function(elem){return elem!=="";});
-  return mots;
-};
-
 //Retourne la chaine str allégée des lettres a_supprimer
 Oulipo.allege = function (a_supprimer, str){
   str = helpers.accentsTidy(str); 

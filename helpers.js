@@ -17,11 +17,30 @@ accentsTidy = function(s){
   return r;
 };
 
-strtr = function(from, to, str) {
-  for(var i = 0; i < from.length; i++) {
-    str = str.replace(new RegExp(from.charAt(i),'g'), to.charAt(i));
+strtr = function (from, to, string) {
+  var length = 0;
+  var hash = [];
+  var tmp = "";
+  if (from.length < to.length) {
+    length = from.length;
   }
-  return str;
+  else {
+    length = to.length;
+  }
+
+  for (var i=0; i<length; i++) {
+    hash[from.charAt(i)] = to.charAt(i);
+  }
+  for (var j=0; j<string.length; j++) {
+    var c = string.charAt(j);
+    if (hash[c]){
+      tmp = tmp + hash[string.charAt(j)];
+    }
+    else {
+      tmp = tmp + c;
+    }
+  }
+  return tmp;
 };
 
 sortByKeys = function(hash){
@@ -59,5 +78,6 @@ jsonDisplay = function(data, args){
   }
 };
 
+exports.strtr= strtr;
 exports.accentsTidy = accentsTidy;
 exports.jsonDisplay = jsonDisplay;
