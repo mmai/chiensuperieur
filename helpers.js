@@ -1,5 +1,9 @@
 var Table = require('cli-table'); // for jsonDisplay
 
+/*************************************************
+ * String functions
+ * ***********************************************/
+
 accentsTidy = function(s){
   var r=s.toLowerCase();
 //  r = r.replace(new RegExp("\\s", 'g'),"");
@@ -43,6 +47,10 @@ strtr = function (from, to, string) {
   return tmp;
 };
 
+/***************************************
+ * Array functions
+ * *************************************/
+
 sortByKeys = function(hash){
   var newhash = Array();
   var keys = Object.keys(hash).sort();
@@ -51,6 +59,22 @@ sortByKeys = function(hash){
   }
   return newhash;
 };
+
+combinaisons = function(ens, cmb, n, p , i, k, callback) {
+  if (k === p) {
+    callback(cmb,p);
+  }
+  else if (i < n) {
+    combi2(ens,cmb,n,p,i+1,k,callback);
+    cmb[k] = ens[i];
+    combi2(ens,cmb,n,p,i+1,k+1,callback);
+  }
+};
+
+
+/*********************************
+ * Display functions
+ * ******************************/
 
 //Dispay array of json data in a readable format
 jsonDisplay = function(data, args){

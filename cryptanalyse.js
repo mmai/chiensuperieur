@@ -18,6 +18,7 @@ Crypt.assoc_method_factory = function(from, to){
 };
 /* fin methodes */
 
+
 var nextCount = 0;
 var nextCode = function(from, code){
   var len = from.length;
@@ -41,8 +42,8 @@ var nextCode = function(from, code){
 };
 
 Crypt.try_methods = function(dict, text){
-  var from = "ulcerations";
-  var code = "uuuuuuuuuuu";
+  var from = ["u","l","c","e","r","a","t","i","o","n","s"];
+  var code = from;
   var found = false;
   var method;
 
