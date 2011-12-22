@@ -13,42 +13,46 @@
 */
 
 nextPermutation = function (init, comb){
+  console.log('comb : ' + comb);
+  console.log('>>>>');
   var size = init.length;
   var last = init[size - 1];
   var curLetterIndex = 0;
-  console.log("-------------");
-  console.log(init);
+//  console.log("-------------");
+//  console.log(init);
   console.log(comb);
-  console.log(size);
-  console.log(last);
-  console.log("-------------");
+//  console.log(last);
+//  console.log("-------------");
   while (curLetterIndex < size && comb[curLetterIndex] === last){
     curLetterIndex++;
   }
   if (curLetterIndex === size){
+    console.log('<<<<<<<<<<');
     return false;
   }
   else {
-    console.log("curLetterIndex : "+curLetterIndex);
+//    console.log("curLetterIndex : "+curLetterIndex);
     var combBegin = comb.slice(0, curLetterIndex);
     var combEnd = comb.slice(curLetterIndex + 1);
     var combEndIni = combEnd.slice(0);
     combEnd = nextPermutation(combEndIni, combEnd);
-    console.log("==> ");
-    console.log(combEnd);
     if (combEnd !== false){
+      console.log('<<<<<<<<<<');
       return combBegin.concat(combEnd); 
     }
     else {
+      console.log('and now, comb : ' + comb);
       var combSub = comb.slice(0);
       var nextLetter = init[init.indexOf(comb[0]) + 1]; 
+      console.log('nextLetter : '+ nextLetter);
       console.log(combSub);
       combSub.splice(combSub.indexOf(nextLetter), 1);
       console.log(combSub);
-      var out = combSub.unshift(nextLetter);
+      combSub.unshift(nextLetter);
       console.log('permut : ');
-      console.log(out);
-      return out;
+      console.log(combSub);
+      console.log('<<<<<<<<<<');
+      return combSub;
     }
   }
 };
@@ -65,5 +69,5 @@ permutations = function(elems){
 };
 
 
-var ens = [1,2,3,4,5,6];
+var ens = ['a','b','c'];
 console.log(permutations(ens));
