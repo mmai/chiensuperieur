@@ -3,56 +3,37 @@ var helpers = require('./helpers');
 var Crypt = {};
 
 /* methodes */
+
+//From & to = arrays
 Crypt.assoc_method_factory = function(from, to){
   return function (text, decode){
-    var thisfrom = from;
-    var thisto = to;
+    var thisfrom = from.slice(0);
+    var thisto = to.slice(0);
     if (decode === true){
       //Décodage : association inverse
-      thisfrom = to;
-      thisto = from;
+      thisfrom = to.slice(0);
+      thisto = from.slice(0);
     }
-
     return helpers.strtr(thisfrom, thisto, text);
   };
 };
 /* fin methodes */
 
 
-var nextCount = 0;
-var nextCode = function(from, code){
-  var len = from.length;
-  var last = from[len - 1];
-
-  var position = 0;
-  while (position < len){
-    var letter = code[position];
-    if (letter !== last) {
-      code = code.substr(0, position) + from[from.indexOf(letter) + 1] + code.substr(position + 1);
-      nextCount++;
-      if (nextCount === 100){
-        console.log('.');
-        nextCount = 0;
-      }
-      return code;
-    }
-    position++;
-  }
-  return false;
-};
-
 Crypt.try_methods = function(dict, text){
-  var from = ["u","l","c","e","r","a","t","i","o","n","s"];
-  var code = from;
-  var found = false;
-  var method;
+//  var from = ["u","l","c","e","r","a","t","i","o","n","s"];
+  var from = ["u","l","c","e","r","a", "t"];
 
-  while (!found && (code !== false)){
-    method = Crypt.assoc_method_factory(from, code);
-    found = Crypt.analyse(dict, method, text); 
-    code = nextCode(from, code);
-  }
-  return code;
+  checkPermutation = function(permutation){
+//    console.log("trying "+permutation);
+    var method = Crypt.assoc_method_factory(from, permutation);
+    return Crypt.analyse(dict, method, text); 
+  };
+
+  permutation =  helpers.permute(from, checkPermutation);
+
+  var method = Crypt.assoc_method_factory(from, permutation);
+  return method(text,true);
 };
 
 Crypt.getMots = function(txt){

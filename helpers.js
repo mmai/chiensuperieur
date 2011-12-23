@@ -21,30 +21,11 @@ accentsTidy = function(s){
   return r;
 };
 
-strtr = function (from, to, string) {
-  var length = 0;
-  var hash = [];
-  var tmp = "";
-  if (from.length < to.length) {
-    length = from.length;
+strtr = function (from, to, txt) {//from & to : arrays
+  for (var i=0, len=from.length; i<len; i++) {
+    txt = txt.replace(new RegExp(from[i], 'g'), to[i]);
   }
-  else {
-    length = to.length;
-  }
-
-  for (var i=0; i<length; i++) {
-    hash[from.charAt(i)] = to.charAt(i);
-  }
-  for (var j=0; j<string.length; j++) {
-    var c = string.charAt(j);
-    if (hash[c]){
-      tmp = tmp + hash[string.charAt(j)];
-    }
-    else {
-      tmp = tmp + c;
-    }
-  }
-  return tmp;
+  return txt;
 };
 
 /***************************************
@@ -60,17 +41,21 @@ sortByKeys = function(hash){
   return newhash;
 };
 
-combinaisons = function(ens, cmb, n, p , i, k, callback) {
-  if (k === p) {
-    callback(cmb,p);
+//Send permutations of v to callback, stops if callback returns true
+ permute = function(v, callback){
+  for(var p = -1, j, k, f, r, l = v.length, q = 1, i = l +1; --i > 0 ; q *= i);
+  for(x = [new Array(l), new Array(l), new Array(l), new Array(l)], j = q, k = l + 1, i = -1;
+        ++i < l; x[2][i] = i, x[1][i] = x[0][i] = j /= --k);
+    for(r = new Array(q); ++p < q;){
+      for(r[p] = new Array(l), i = -1; ++i < l; !--x[1][i] && (x[1][i] = x[0][i], x[2][i] = (x[2][i] + 1) % l), r[p][i] =  v[x[3][i]])
+        for(x[3][i] = x[2][i], f = 0; !f; f = !f)
+          for(j = i; j; x[3][--j] == x[2][i] && (x[3][i] = x[2][i] = (x[2][i] + 1) % l, f = 1));
+        if (callback(r[p])){
+          return r[p];
+        }
   }
-  else if (i < n) {
-    combi2(ens,cmb,n,p,i+1,k,callback);
-    cmb[k] = ens[i];
-    combi2(ens,cmb,n,p,i+1,k+1,callback);
-  }
+    return r;
 };
-
 
 /*********************************
  * Display functions
@@ -102,6 +87,7 @@ jsonDisplay = function(data, args){
   }
 };
 
+exports.permute= permute;
 exports.strtr= strtr;
 exports.accentsTidy = accentsTidy;
 exports.jsonDisplay = jsonDisplay;
