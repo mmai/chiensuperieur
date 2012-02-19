@@ -44,7 +44,7 @@ var chientressuperieur = " IBS EUSLCCONISR, ONSDNCCS0 ," + "\n" +
 //var dict = 'mots_francais_chien_signatureDecalage.txt';
 
 var lignes = chiensuperieur1.split("\n");
-var dict = 'mots_francais_chien.txt';
+var dict = 'mots_francais_chien_unique.txt';
 
 var testassoc = Crypt.assoc_method_factory("lnesutcaori","ulcerations");
 
@@ -55,7 +55,9 @@ fs.readFile(fichier, 'utf8', function(err, dict_data){
       process.exit(1);
     }
 
-    Crypt.try_methods(dict_data, "t'cea uc tscl rs");
+    //result  = Crypt.try_methods(dict_data, "t'cea uc tscl rs");
+    result  = Crypt.try_methods(dict_data, "u nutl so nrilo");
+    console.log(result);
     /*
     for (var i=0, len = lignes.length;i< len;i++){
       ligne = lignes[i];
