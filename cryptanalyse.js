@@ -21,17 +21,31 @@ Crypt.assoc_method_factory = function(from, to){
 
 
 Crypt.try_methods = function(dict, text){
-  var from = ["u","l","c","e","r","a","t","i","o","n","s"];
+  var from = ["u","l","c","e","r","a","t","i","o","n","s"].filter(function(letter){ return text.indexOf(letter) >= 0; });
+
+
+  var permutationCandidates = [];
 
   checkPermutation = function(permutation){
-//    console.log('checking '+permutation);
     var method = Crypt.assoc_method_factory(from, permutation);
-    return Crypt.analyse(dict, method, text); 
+    if (Crypt.analyse(dict, method, text)) {
+      console.log("---------");
+      console.log(permutation);
+      console.log(method(text,true));
+      console.log("---------");
+      return true;
+    } 
+    return false;
   };
 
-  permutation =  helpers.permute(from, checkPermutation);
+  res =  helpers.permute(from, checkPermutation, function(perm){ permutationCandidates.push(perm); });
 
-  var method = Crypt.assoc_method_factory(from, permutation);
+  permutationCandidates.forEach(function(perm){
+    console.log(perm);
+    let method = Crypt.assoc_method_factory(from, perm);
+    console.log(method(text,true));
+  })
+  //Retourne la dernière
   return method(text,true);
 };
 

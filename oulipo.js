@@ -32,7 +32,7 @@ Oulipo.allege = function (a_supprimer, str){
   return str;
 };
 
-//Retourne la traduction de str en "chien ordinaire", ie on ne conserver que les lettres du mot ulcerations
+//Retourne la traduction de str en "chien ordinaire", ie on ne conserve que les lettres du mot ulcerations
 Oulipo.chienOrdinaire = function (str){
   return Oulipo.allege(["b","d","f","g","h","j","k","m","p","q","v","w","x","y","z"], str);
 };

@@ -41,21 +41,22 @@ sortByKeys = function(hash){
   return newhash;
 };
 
-//Send permutations of v to callback, stops if callback returns true
- permute = function(v, callback){
-  for(var p = -1, j, k, f, r, l = v.length, q = 1, i = l +1; --i > 0 ; q *= i);
-  for(x = [new Array(l), new Array(l), new Array(l), new Array(l)], j = q, k = l + 1, i = -1;
-        ++i < l; x[2][i] = i, x[1][i] = x[0][i] = j /= --k);
-    for(r = new Array(q); ++p < q;){
-      for(r[p] = new Array(l), i = -1; ++i < l; !--x[1][i] && (x[1][i] = x[0][i], x[2][i] = (x[2][i] + 1) % l), r[p][i] =  v[x[3][i]])
-        for(x[3][i] = x[2][i], f = 0; !f; f = !f)
-          for(j = i; j; x[3][--j] == x[2][i] && (x[3][i] = x[2][i] = (x[2][i] + 1) % l, f = 1));
-        if (callback(r[p])){
-          return r[p];
-        }
-  }
-    return r;
-};
+//Send permutations of v to callback_check, call callback_success if check returns true
+ permute = function(v, callback_check, callback_success){
+   for(var p = -1, j, k, f, r, l = v.length, q = 1, i = l +1; --i > 0 ; q *= i);
+   for(x = [new Array(l), new Array(l), new Array(l), new Array(l)], j = q, k = l + 1, i = -1;
+       ++i < l; x[2][i] = i, x[1][i] = x[0][i] = j /= --k);
+   for(r = new Array(q); ++p < q;){
+     for(r[p] = new Array(l), i = -1; ++i < l; !--x[1][i] && (x[1][i] = x[0][i], x[2][i] = (x[2][i] + 1) % l), r[p][i] =  v[x[3][i]])
+       for(x[3][i] = x[2][i], f = 0; !f; f = !f)
+         for(j = i; j; x[3][--j] == x[2][i] && (x[3][i] = x[2][i] = (x[2][i] + 1) % l, f = 1));
+     // console.log("trying ", r[p]);
+     if (callback_check(r[p])){
+       callback_success(r[p]);
+     }
+   }
+   return r;
+ };
 
 /*********************************
  * Display functions

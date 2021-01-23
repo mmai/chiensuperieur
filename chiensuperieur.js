@@ -55,8 +55,8 @@ fs.readFile(fichier, 'utf8', function(err, dict_data){
       process.exit(1);
     }
 
-    //result  = Crypt.try_methods(dict_data, "t'cea uc tscl rs");
-    result  = Crypt.try_methods(dict_data, "u nutl so nrilo");
+    result  = Crypt.try_methods(dict_data, "t'cea uc tscl rs");
+    // result  = Crypt.try_methods(dict_data, "u nutl so nrilo");
     console.log(result);
     /*
     for (var i=0, len = lignes.length;i< len;i++){
