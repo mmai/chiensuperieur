@@ -20,12 +20,12 @@ var chiensuperieur2 = "O'atn ia ootar ost" + "\n" +
 
 var chientressuperieur = " IBS EUSLCCONISR, ONSDNCCS0 ," + "\n" +
 " EUF SLS ENSIO TELE:1" + "\n" +
-"RA UNGESL KJE OOCHMQP" + "\n" +
+"RA UNGESL KJE OOCHEMQP" + "\n" +
 "NE TURUVS OS IWINE" + "\n" +
 "LENSOS E,T,E,S, ALI" + "\n" +
 "XEETSE'EN. Y STL'EE" + "\n" +
 "EETETR UNNZLA. E BA" + "\n" +
-"EURUR=C AEARUIA=R" + "\n" +
+" EARUR=C AEARUIA=R" + "\n" +
 "CA UAEE A=I. T" + "\n" +
 "ARR ES LATSE, E" + "\n" +
 "GDH OTFTMTA, L SOR" + "\n" +
@@ -35,7 +35,7 @@ var chientressuperieur = " IBS EUSLCCONISR, ONSDNCCS0 ," + "\n" +
 "E ELESUXNSECO SYT" + "\n" +
 "EEOUZSTIS NEESOCB" + "\n" +
 "TUUARREECT UAFDE LOELLA-" + "\n" +
-"TRH L. GEREOLAJ TS" + "\n" +
+"TRH L. GEREOALJ TS" + "\n" +
 "EARELAITNK TREOLIR T" + "\n" +
 "IPQ AIU NEE V" + "\n" +
 "EUW TXOENNE.";
