@@ -1,5 +1,5 @@
 var fs = require('fs');
-var Oulipo = require('../oulipo').Oulipo;
+var Oulipo = require('../js/oulipo').Oulipo;
 
 var transforme = function (fichier, func, callback){
   fs.readFile(fichier, 'utf8', function(err,data){
